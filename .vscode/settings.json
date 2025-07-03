@@ -1,5 +1,5 @@
 {
-  "mcp.configPath": "~/.config/mcp.json",
+  "mcp.configPath": "~/dotfiles/config/mcp.json",
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.enable": {
     "*": true

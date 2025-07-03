@@ -6,19 +6,19 @@ echo "🔧 Setting up MCP configuration..."
 mkdir -p ~/.config
 
 # Check if MCP config already exists and is up to date
-if [ -f ~/.config/mcp.json ] && [ -f "$(dirname "$0")/mcp.json" ]; then
-    if cmp -s "$(dirname "$0")/mcp.json" ~/.config/mcp.json; then
+if [ -f ~/.config/mcp.json ] && [ -f "$(dirname "$0")/config/mcp.json" ]; then
+    if cmp -s "$(dirname "$0")/config/mcp.json" ~/.config/mcp.json; then
         echo "✅ MCP configuration is already up to date"
         exit 0
     fi
 fi
 
 # Copy MCP configuration
-if [ -f "$(dirname "$0")/mcp.json" ]; then
-    cp "$(dirname "$0")/mcp.json" ~/.config/mcp.json
+if [ -f "$(dirname "$0")/config/mcp.json" ]; then
+    cp "$(dirname "$0")/config/mcp.json" ~/.config/mcp.json
     echo "✅ MCP configuration copied to ~/.config/mcp.json"
 else
-    echo "❌ mcp.json not found in dotfiles directory"
+    echo "❌ config/mcp.json not found in dotfiles directory"
     exit 1
 fi
 

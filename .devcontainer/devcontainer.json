@@ -1,14 +1,14 @@
 {
-    "name": "Dotfiles Environment",
+    "name": "Dotfiles Development Environment",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
     "postCreateCommand": "./install.sh",
     "customizations": {
         "vscode": {
-            "settings": {},
             "extensions": [
                 "GitHub.copilot",
                 "GitHub.copilot-chat"
             ]
         }
-    }
+    },
+    "remoteUser": "codespace"
 }
