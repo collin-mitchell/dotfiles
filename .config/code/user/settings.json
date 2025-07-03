@@ -50,5 +50,6 @@
   "inlineChat.enableV2": true,
   "inlineChat.hideOnRequest": true,
   "inlineChat.finishOnType": true,
-  "inlineChat.lineEmptyHint": true,
+  "inlineChat.lineEmptyHint": true
+}
   
