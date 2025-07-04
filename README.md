@@ -27,10 +27,8 @@ chmod +x install.sh
 
 ## Configuration Files
 
-- `config/mcp.json` - MCP server configurations
-- `.vscode/settings.json` - VS Code settings including Copilot preferences
+- `.vscode/settings.json` - VS Code settings including Copilot preferences and MCP server configurations
 - `install.sh` - Main installation script
-- `setup-mcp.sh` - MCP-specific setup script
 - `.devcontainer/devcontainer.json` - Codespace configuration
 
 ## MCP Servers Included
@@ -53,8 +51,7 @@ chmod +x install.sh
 ## Key Optimizations
 
 - **Environment Detection**: Automatically detects Codespace vs local environment
-- **Settings Merging**: Intelligently merges VS Code settings with existing Codespace configuration
-- **Path Consistency**: Uses correct paths for MCP configuration in different environments
+- **Simplified Configuration**: Single settings.json file contains all VS Code and MCP settings
 - **Package Pre-installation**: Pre-installs common MCP packages for faster startup
 - **Robust Error Handling**: Graceful fallbacks if certain features are unavailable
 
@@ -65,12 +62,9 @@ dotfiles/
 ├── .devcontainer/
 │   └── devcontainer.json          # Codespace configuration
 ├── .vscode/
-│   ├── settings.json              # VS Code settings
+│   ├── settings.json              # VS Code settings with embedded MCP configuration
 │   └── tasks.json                 # VS Code tasks
-├── config/
-│   └── mcp.json                   # MCP server configuration
 ├── install.sh                     # Main installation script
-├── setup-mcp.sh                   # MCP setup script
 └── README.md                      # This file
 ```
 
