@@ -35,9 +35,8 @@ else
     echo "❌ VS Code settings not found"
 fi
 
-# Setup MCP configuration
-echo "🤖 Setting up MCP servers..."
-"$DOTFILES_DIR/setup-mcp.sh"
+# MCP configuration is now embedded in VS Code settings.json
+echo "✅ MCP configuration included in VS Code settings"
 
 # Setup additional Codespace-specific configurations
 if [ -n "$CODESPACES" ]; then
