@@ -1,13 +1,29 @@
 {
-    "name": "Dotfiles Development Environment",
+    "name": "Codespace with Dotfiles",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
-    "postCreateCommand": "./install.sh",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        }
+    },
+    "postCreateCommand": [
+        "bash",
+        "-c",
+        "if [ -f ~/dotfiles/install.sh ]; then chmod +x ~/dotfiles/install.sh && ~/dotfiles/install.sh; fi"
+    ],
     "customizations": {
         "vscode": {
             "extensions": [
                 "GitHub.copilot",
-                "GitHub.copilot-chat"
-            ]
+                "GitHub.copilot-chat",
+                "modelcontextprotocol.mcp"
+            ],
+            "settings": {
+                "dotfiles.repository": "https://github.com/collin-mitchell/dotfiles",
+                "dotfiles.targetPath": "~/dotfiles",
+                "dotfiles.installCommand": "~/dotfiles/install.sh"
+            }
         }
     },
     "remoteUser": "codespace"

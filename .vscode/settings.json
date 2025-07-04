@@ -1,5 +1,5 @@
 {
-  "mcp.configPath": "~/dotfiles/config/mcp.json",
+  "mcp.configPath": "~/.config/mcp.json",
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.enable": {
     "*": true
@@ -8,9 +8,6 @@
   "github.copilot.editor.enableCodeActions": true,
   "github.copilot.chat.startDebugging.enabled": true,
   "github.copilot.chat.codeGeneration.instructions": [
-    {
-      "file": ".copilot-instructions.md"
-    },
     {
       "text": "Prefer to use TypeScript over Javascript"
     },

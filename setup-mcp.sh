@@ -15,8 +15,9 @@ fi
 
 # Copy MCP configuration
 if [ -f "$(dirname "$0")/config/mcp.json" ]; then
-    cp "$(dirname "$0")/config/mcp.json" ~/.config/mcp.json
-    echo "✅ MCP configuration copied to ~/.config/mcp.json"
+    # Remove existing file or link and create a new symlink
+    ln -sf "$(dirname "$0")/config/mcp.json" ~/.config/mcp.json
+    echo "✅ MCP configuration symlinked to ~/.config/mcp.json"
 else
     echo "❌ config/mcp.json not found in dotfiles directory"
     exit 1
