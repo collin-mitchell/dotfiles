@@ -12,6 +12,11 @@ This repository contains my personal development environment configuration, spec
    - ✅ Select your forked dotfiles repository
    - ✅ Enable "Settings Sync" for user-level VS Code preferences
 3. **Create a new Codespace** - your environment will be automatically configured!
+4. **Run the master setup script** (if needed):
+   ```bash
+   ./install.sh --setup
+   ```
+   This will install, validate, and test everything for you (works with Copilot Agent Mode too).
 
 ## 🤖 MCP Servers Configuration
 
@@ -68,105 +73,93 @@ This dotfiles repo includes 5 pre-configured MCP servers for enhanced AI capabil
 | **Launch Configs** | Dotfiles | `.vscode/launch.json` | Workspace | ✅ Repository |
 | **Keybindings** | Settings Sync | User Settings | Global | ✅ GitHub Account |
 
-## 🛠️ Manual Setup (if needed)
+## 🛠️ Usage: One Script for Everything
 
-### GitHub Token Configuration
+All setup, validation, and troubleshooting is handled by `install.sh`:
+
+```bash
+# Normal install (default)
+./install.sh
+
+# Full Copilot Agent Mode automation
+./install.sh --setup
+
+# Validate setup
+./install.sh --validate
+
+# Troubleshoot/fix issues
+./install.sh --fix
+```
+
+**GitHub Token Configuration:**
 For the `github-copilot-mcp` server:
 1. Create a [Personal Access Token](https://github.com/settings/tokens)
 2. In VS Code, when prompted for `github_token`, paste your token
 3. Token will be saved securely in Codespace
 
-### Verify Installation
-```bash
-# Check MCP servers status
-ls -la .vscode/mcp.json
+## 🔍 Troubleshooting & Validation
 
-# Verify Python dependencies
-python -m mcp_server_fetch --help
+**If MCP servers are not working:**
+1. **Validate setup:**
+   ```bash
+   ./install.sh --validate
+   ```
+2. **Fix issues automatically:**
+   ```bash
+   ./install.sh --fix
+   ```
+3. **Restart VS Code window:** `Ctrl+Shift+P` → "Developer: Reload Window"
+4. **Check installation logs:** `/workspaces/.codespaces/.persistedshare/creation.log`
+5. **Check GitHub token:** Ensure token is provided for GitHub MCP server
 
-# Test Node.js dependencies
-npx @modelcontextprotocol/server-sequential-thinking --help
-```
+**If settings are not persisting:**
+- Workspace settings: Ensure changes are in dotfiles and committed
+- User settings: Verify Settings Sync is enabled in GitHub settings
+- MCP configs: Check both workspace and user-level configs are synchronized
 
-## 🔍 Troubleshooting
+## 🎯 Usage Guidelines for AI Agents & Copilot
 
-### MCP Servers Not Loading
-1. **Restart VS Code window**: `Ctrl+Shift+P` → "Developer: Reload Window"
-2. **Check installation logs**: `/workspaces/.codespaces/.persistedshare/creation.log`
-3. **Verify dependencies**: Run `./install.sh` manually
-4. **Check GitHub token**: Ensure token is provided for GitHub MCP server
+### **Copilot Agent Mode: Magic Prompt**
 
-### Settings Not Persisting
-- **Workspace settings**: Ensure changes are in dotfiles and committed
-- **User settings**: Verify Settings Sync is enabled in GitHub settings
-- **MCP configs**: Check both workspace and user-level configs are synchronized
+> "Set up my development environment using the automation in my dotfiles. Run ./install.sh --setup and fix any issues with MCP servers. Restart VS Code when needed and test the MCP tools."
 
-### Dependencies Missing
-```bash
-# Reinstall Python dependencies
-pip install --user mcp-server-fetch
+### **Manual/Advanced Usage**
 
-# Verify Node.js environment
-node --version && npm --version
-```
-
-## 🎯 Usage Guidelines for AI Agents
-
-### **When Working with This Environment**
-
-1. **MCP Tools Available**:
-   - Use `#mcp_sequential-th_sequentialthinking` for complex reasoning
-   - Use `#mcp_fetch_fetch` for web content retrieval
-   - Use Context7 by adding "use context7" to prompts for documentation
-   - Use Playwright tools for browser automation tasks
-
-2. **Configuration Changes**:
-   - **Workspace-level changes** → Modify files in dotfiles repo and commit
-   - **User-level changes** → Use VS Code settings UI (syncs automatically)
-
-3. **Adding New MCP Servers**:
-   - Add to `.vscode/mcp.json` in dotfiles
-   - Update `install.sh` if dependencies needed
-   - Test in current Codespace, then commit changes
-
-### **Do's and Don'ts for Future Agents**
-
-#### ✅ DO: Use Dotfiles For
-- **MCP server configurations** (`.vscode/mcp.json`)
-- **Workspace-specific settings** (`.vscode/settings.json`)
-- **Project dependencies** (`install.sh`)
-- **Development tools setup** (language runtimes, CLI tools)
-- **Repository-specific configurations**
-- **Build/task configurations** (`.vscode/tasks.json`)
-
-#### ❌ DON'T: Use Dotfiles For  
-- **User-level VS Code preferences** (use Settings Sync instead)
-- **Personal UI customizations** (themes, keybindings)
-- **Extension settings** (synced automatically)
-- **Copilot Chat preferences** (user-level, use Settings Sync)
-- **Personal snippets** (use Settings Sync)
+1. **Install or repair everything:**
+   ```bash
+   ./install.sh --setup
+   ```
+2. **Validate setup:**
+   ```bash
+   ./install.sh --validate
+   ```
+3. **Fix issues:**
+   ```bash
+   ./install.sh --fix
+   ```
+4. **Restart VS Code:** `Ctrl+Shift+P` → "Developer: Reload Window"
+5. **Test MCP tools in Copilot Chat:**
+   - `#mcp_sequential-th_sequentialthinking` for complex reasoning
+   - `#mcp_fetch_fetch` for web content retrieval
+   - `use Context7` for documentation
+   - Playwright for browser automation
 
 ## 🔄 Updating This Configuration
 
-### Adding New MCP Servers
+**To add or update MCP servers:**
 1. Edit `.vscode/mcp.json`
 2. Add dependencies to `install.sh` if needed
 3. Test in current Codespace
 4. Commit and push changes
 5. New Codespaces will automatically include changes
 
-### Modifying Existing Servers
-1. Update configuration in `.vscode/mcp.json`
-2. Restart VS Code window to reload
-3. Commit changes for future Codespaces
-
-## � Repository Structure
+## 📁 Repository Structure
 
 ```
 dotfiles/
 ├── .vscode/
 │   └── mcp.json                 # MCP server configuration (workspace-level)
-├── install.sh                  # Dependency installation script
+├── install.sh                  # All-in-one setup, validation, and automation script
 └── README.md                   # This comprehensive documentation
 ```
 
